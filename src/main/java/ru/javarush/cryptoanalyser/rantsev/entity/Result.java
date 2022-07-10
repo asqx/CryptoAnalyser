@@ -1,4 +1,4 @@
-package ru.javarush.cryptoanaliser.rantsev.entity;
+package ru.javarush.cryptoanalyser.rantsev.entity;
 
 public class Result {
 

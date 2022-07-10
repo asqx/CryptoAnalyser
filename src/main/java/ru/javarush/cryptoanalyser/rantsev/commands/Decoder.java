@@ -1,6 +1,6 @@
-package ru.javarush.cryptoanaliser.rantsev.commands;
+package ru.javarush.cryptoanalyser.rantsev.commands;
 
-import ru.javarush.cryptoanaliser.rantsev.entity.Result;
+import ru.javarush.cryptoanalyser.rantsev.entity.Result;
 
 public class Decoder implements Action{
     @Override

@@ -1,4 +1,4 @@
-package ru.javarush.cryptoanaliser.rantsev.utilities;
+package ru.javarush.cryptoanalyser.rantsev.utilities;
 
 import java.io.File;
 

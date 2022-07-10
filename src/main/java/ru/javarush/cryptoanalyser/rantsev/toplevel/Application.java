@@ -1,7 +1,7 @@
-package ru.javarush.cryptoanaliser.rantsev.toplevel;
+package ru.javarush.cryptoanalyser.rantsev.toplevel;
 
-import ru.javarush.cryptoanaliser.rantsev.entity.Result;
-import ru.javarush.cryptoanaliser.rantsev.controller.MainController;
+import ru.javarush.cryptoanalyser.rantsev.entity.Result;
+import ru.javarush.cryptoanalyser.rantsev.controller.MainController;
 
 import java.util.Arrays;
 

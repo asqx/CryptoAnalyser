@@ -1,7 +1,7 @@
-package ru.javarush.cryptoanaliser.rantsev.controller;
+package ru.javarush.cryptoanalyser.rantsev.controller;
 
-import ru.javarush.cryptoanaliser.rantsev.commands.Action;
-import ru.javarush.cryptoanaliser.rantsev.entity.Result;
+import ru.javarush.cryptoanalyser.rantsev.commands.Action;
+import ru.javarush.cryptoanalyser.rantsev.entity.Result;
 
 public class MainController {
     public Result execute(String command, String[] parameters) {

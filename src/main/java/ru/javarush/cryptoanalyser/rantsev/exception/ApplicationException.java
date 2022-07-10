@@ -1,4 +1,4 @@
-package ru.javarush.cryptoanaliser.rantsev.exception;
+package ru.javarush.cryptoanalyser.rantsev.exception;
 
 public class ApplicationException extends RuntimeException {
     public ApplicationException() {
