@@ -1,6 +1,5 @@
 package ru.javarush.cryptoanalyser.rantsev.toplevel;
 
-import ru.javarush.cryptoanalyser.rantsev.Menu;
 import ru.javarush.cryptoanalyser.rantsev.entity.Result;
 import ru.javarush.cryptoanalyser.rantsev.controller.MainController;
 
