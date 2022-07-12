@@ -7,7 +7,6 @@ import ru.javarush.cryptoanalyser.rantsev.commands.Encoder;
 public enum Actions {
     ENCODE(new Encoder()),
     DECODE(new Decoder());
-
     private final Action action;
 
     Actions(Action action) {

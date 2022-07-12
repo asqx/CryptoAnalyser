@@ -1,4 +1,4 @@
-package ru.javarush.cryptoanalyser.rantsev.constants;
+package ru.javarush.cryptoanalyser.rantsev.constant;
 
 public class Alphabet {
 

@@ -8,7 +8,8 @@ public class Encoder implements Action{
     public Result execute(String[] parameters) {
         //TODO need dev logic decrypt
         String txtFile = parameters[0];
-        String encryptedFile = parameters[0];
+        String encryptedFile = parameters[1];
+        System.out.println("енкодер");
         return new Result(ResultCode.OK, "read all bytes");
     }
 }
