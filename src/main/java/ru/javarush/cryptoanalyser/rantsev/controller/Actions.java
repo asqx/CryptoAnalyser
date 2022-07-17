@@ -1,12 +1,15 @@
 package ru.javarush.cryptoanalyser.rantsev.controller;
 
-import ru.javarush.cryptoanalyser.rantsev.commands.Action;
-import ru.javarush.cryptoanalyser.rantsev.commands.Decoder;
-import ru.javarush.cryptoanalyser.rantsev.commands.Encoder;
+import ru.javarush.cryptoanalyser.rantsev.commands.*;
 
 public enum Actions {
     ENCODE(new Encoder()),
-    DECODE(new Decoder());
+    DECODE(new Decoder()),
+    BRUTEFORCE(new Bruteforce()),
+    ANALYSE(new Analyse());
+
+
+
     private final Action action;
 
     Actions(Action action) {

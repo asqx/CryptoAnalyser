@@ -19,11 +19,12 @@ public interface Message {
     String SOURCE_SELECTION = "Enter source (full path OR only file name OR enter for text.txt)";
     String SOURCE_DESTINATION = "Enter source (full path OR only file name OR enter for";
     String WARNING = "Warning: Files with the same name will be overwritten";
-    String SUCCESSFULLY = "Notification: File created successfully";
+    String SUCCESSFULLY = "Notification: File is ready";
     String SOURCE_KEY = "Enter key (int number OR enter for key = 1)";
     String KEY_WARNING = "Warning: The key must be greater than 1, otherwise it will be assigned the value 1";
     String KEY_SUCCESSFULLY = "Notification: Key selected successfully";
     String PARAMETERS = "Parameters passed incorrectly at startup";
+    String KEY_ERROR = "Entered not a number";
 
 
 }

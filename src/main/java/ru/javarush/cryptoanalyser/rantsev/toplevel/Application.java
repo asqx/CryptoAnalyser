@@ -21,9 +21,9 @@ public class Application {
                 mainController.execute(command, parameters);
             } else if (args.length == 4){
                 ParametersCheck parametersCheck = new ParametersCheck();
-                parametersCheck.checkArgs(args);
-                String command = args[0];
-                String[] parameters = Arrays.copyOfRange(args, 1, args.length);
+                String[] verifiedArgs = parametersCheck.checkArgs(args);
+                String command = verifiedArgs[0];
+                String[] parameters = Arrays.copyOfRange(verifiedArgs, 1, verifiedArgs.length);
                 mainController.execute(command, parameters);
             } else {
                 System.err.println(Message.PARAMETERS);

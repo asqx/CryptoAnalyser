@@ -28,6 +28,9 @@ public class Menu {
 
     public String[] getArgs() {
         int mode = getMode(console);
+        if (mode == 4) {
+            System.exit(0);
+        }
         FileGeneration fileGeneration = new FileGeneration();
         ShiftKey shiftKey = new ShiftKey();
         addCommands();
@@ -44,15 +47,17 @@ public class Menu {
         System.out.println(Message.WARNING + Message.ANSI_GREEN);
         fileGeneration.getInputFile(args);
         System.out.println(Message.SUCCESSFULLY + Message.ANSI_BLACK);
+        System.out.println();
         System.out.println(Message.SOURCE_DESTINATION + "\s" + files[mode] + ")" + Message.ANSI_RED);
         System.out.println(Message.WARNING + Message.ANSI_GREEN);
         fileGeneration.getOutputFiles(files, args, mode);
-        System.out.println(Message.SUCCESSFULLY + Message.ANSI_BLACK);
-        System.out.println(Message.SOURCE_KEY + Message.ANSI_RED);
-        System.out.println(Message.KEY_WARNING + Message.ANSI_GREEN);
-        shiftKey.getKey(args);
-        System.out.println(Message.KEY_SUCCESSFULLY + Message.ANSI_BLACK);
-        System.out.println(args[0] + " ---> " + args[1] + " ---> " + args[2] + " ---> " + args[3]);
+        System.out.print(Message.SUCCESSFULLY + Message.ANSI_BLACK);
+        if (mode == 0 || mode == 1) {
+            System.out.println(Message.SOURCE_KEY + Message.ANSI_RED);
+            System.out.println(Message.KEY_WARNING + Message.ANSI_GREEN);
+            shiftKey.getKey(args);
+            System.out.println(Message.KEY_SUCCESSFULLY + Message.ANSI_BLACK);
+        }
         return args;
     }
 

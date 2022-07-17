@@ -1,6 +1,7 @@
 package ru.javarush.cryptoanalyser.rantsev.utility;
 
 import ru.javarush.cryptoanalyser.rantsev.exception.ApplicationException;
+import ru.javarush.cryptoanalyser.rantsev.toplevel.Message;
 
 import java.util.Scanner;
 
@@ -19,8 +20,7 @@ public class ShiftKey {
                 args[3] = "1";
             }
         } catch (ApplicationException e) {
-            String error = "Entered not a number";
-            System.err.println(error);
+            System.err.println(Message.KEY_ERROR);
         } catch (NumberFormatException e) {
             System.err.println();
         }
