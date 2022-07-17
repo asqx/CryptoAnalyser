@@ -10,6 +10,8 @@ public class Encoder implements Action{
         String txtFile = parameters[0];
         String encryptedFile = parameters[1];
         System.out.println("енкодер");
+        System.out.println(txtFile);
+        System.out.println(encryptedFile);
         return new Result(ResultCode.OK, "read all bytes");
     }
 }
