@@ -51,7 +51,7 @@ public class Menu {
         System.out.println(Message.SOURCE_DESTINATION + "\s" + files[mode] + ")" + Message.ANSI_RED);
         System.out.println(Message.WARNING + Message.ANSI_GREEN);
         fileGeneration.getOutputFiles(files, args, mode);
-        System.out.print(Message.SUCCESSFULLY + Message.ANSI_BLACK);
+        System.out.println(Message.SUCCESSFULLY + Message.ANSI_BLACK);
         if (mode == 0 || mode == 1) {
             System.out.println(Message.SOURCE_KEY + Message.ANSI_RED);
             System.out.println(Message.KEY_WARNING + Message.ANSI_GREEN);

@@ -17,6 +17,8 @@ public class ParametersCheck {
                 System.out.println(commands.get(i));
                 verifiedArgs[0] = args[0];
                 break;
+            } else if (args[0].equals("exit")) {
+                System.exit(0);
             } else {
                 System.err.println(Message.ERROR_COMMAND);
             }
