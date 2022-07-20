@@ -15,10 +15,11 @@ public interface Message {
     String ERROR_COMMAND = "Command not found";
     String FILE_FORMAT = ".txt";
     String FILE_NO_FIND = "File not found";
-    String FILE_CREATED = "File already exists";
+    String PATH_NO_FIND = "Full path no found";
+    String FILE_PROCESS = "Failed to process file";
     String SOURCE_SELECTION = "Enter source (full path OR only file name OR enter for text.txt)";
-    String SOURCE_DESTINATION = "Enter source (full path OR only file name OR enter for";
-    String WARNING = "Warning: Files with the same name will be overwritten";
+    String SOURCE_DESTINATION = "Enter destination (full path OR only file name OR enter for";
+    String WARNING = "Warning: A large file is required, otherwise the analyser may not work correctly";
     String SUCCESSFULLY = "Notification: File is ready";
     String SOURCE_KEY = "Enter key (int number OR enter for key = 1)";
     String KEY_WARNING = "Warning: The key must be greater than 1, otherwise it will be assigned the value 1";

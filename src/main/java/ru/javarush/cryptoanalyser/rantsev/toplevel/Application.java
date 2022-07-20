@@ -14,12 +14,14 @@ public class Application {
         this.menu = menu;
     }
     public void run(String[] args) {
+            //Without parameters in the console
             if (args.length == 0) {
                 String[] run = menu.getArgs();
                 String command = run[0];
                 String[] parameters = Arrays.copyOfRange(run, 1,run.length);
                 mainController.execute(command, parameters);
             } else if (args.length == 4){
+                //With parameters from the console
                 ParametersCheck parametersCheck = new ParametersCheck();
                 String[] verifiedArgs = parametersCheck.checkArgs(args);
                 String command = verifiedArgs[0];

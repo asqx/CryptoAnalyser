@@ -4,10 +4,11 @@ import java.io.File;
 public class PathFinder {
     public static String getRoot() {
         String root = System.getProperty("user.dir");
-        return root + File.separator + "text.txt" + File.separator;
+        System.out.println(root);
+        return root + File.separator  + "text" + File.separator;
     }
     public static String getRoot(int mode, String[] files) {
         String root = System.getProperty("user.dir");
-        return root + File.separator + files[mode] + File.separator;
+        return root + File.separator + "text" + File.separator;
     }
 }

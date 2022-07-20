@@ -8,44 +8,41 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class Analyse implements Action {
-    String sourceText;
+    public static String sourceText;
+    char[] arrays = {'с', 'т', 'н', 'и', 'а', 'е', 'о', ' '};
     @Override
     public Result execute(String[] parameters) {
-        TreeMap <Integer, Character> source = new TreeMap<>();
+        TreeMap <Integer, char[]> source = new TreeMap<>();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(parameters[1]))) {
             sourceText = Files.readString(Paths.get(parameters[0]));
             char[] chars = sourceText.toCharArray();
             int count;
             System.out.println("Length: " + chars.length);
-            for (char aChar : chars) {
-                count = 0;
-                for (char c : chars) {
-                    if (aChar == c) {
-                        count += 1;
+                for (char aChar : chars) {
+                    count = 0;
+                    for (char c : chars) {
+                        if (aChar == c) {
+                            count += 1;
+                        }
                     }
-                }
-                source.put(count, aChar);
-            }
-        } catch (IOException e) {
+                            if (source.size() < 8) {
+                                source.put(count, new char[]{aChar});
+                            }
+                } 
+        }catch (IOException e) {
             System.out.println();
         }
+        //getStatistic(source);
         for (int key: source.keySet()) {
-            char count = source.get(key);
-            System.out.println(key + " ---> " + count);
+            char[] value = source.get(key);
+                System.out.println(key + " ---> " + Arrays.toString(value));
         }
-        getStatistic(source);
         return null;
     }
-
-    void getStatistic(TreeMap<Integer, Character> source) {
-        String targexText;
-        int max = Collections.max(source.keySet());
-        targexText = sourceText.replace(source.get(max), ' ');
-        for (int i = max; i < source.size(); i--) {
-            targexText = sourceText.replace(source.get(i), 'о');
-            targexText = sourceText.replace(source.get(i - 1), 'е');
-            break;
-        }
-        System.out.println(targexText);
-    }
+//    public static void getStatistic(TreeMap<Integer, Character> source) {
+//        String text = sourceText.replace(source.get(Collections.max(source.keySet())), ' ');
+//        String text1 = text.replace(source.get(), 'о');
+//        System.out.println(text1);
+//
+//    }
 }

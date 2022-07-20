@@ -3,6 +3,7 @@ package ru.javarush.cryptoanalyser.rantsev.commands;
 import ru.javarush.cryptoanalyser.rantsev.entity.Result;
 import ru.javarush.cryptoanalyser.rantsev.entity.ResultCode;
 import ru.javarush.cryptoanalyser.rantsev.toplevel.Message;
+import ru.javarush.cryptoanalyser.rantsev.utility.PathFinder;
 
 import java.io.*;
 import java.util.HashMap;
@@ -13,10 +14,12 @@ public class Bruteforce implements Action{
     int resultKey;
     @Override
     public Result execute(String[] parameters) {
+        String root = PathFinder.getRoot();
         Map<Integer, String> map = new HashMap<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(parameters[0]));
-             BufferedWriter writer = new BufferedWriter(new FileWriter(parameters[1]))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(root + parameters[0]));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(root + parameters[1]))) {
             while (reader.ready()) {
+                //Read text line by line from an array
                 String line = reader.readLine();
                 char[] chars = line.toCharArray();
                 for (int key = 0; key < 44; key++) {
@@ -26,6 +29,7 @@ public class Bruteforce implements Action{
                     } else {
                         count = 0;
                     }
+                    //Set bottom border based on text size
                     for (int i = 0; i < ((chars.length%10000) + count); i++) {
                         char symbol = (char)((int)chars[i] - key);
                         stringBuilder.append(symbol);
@@ -34,13 +38,17 @@ public class Bruteforce implements Action{
                 }
                 for (int key: map.keySet()) {
                     String value = map.get(key);
-
-                    if (value.contains(". ") || value.contains(", ") || value.contains(" и ") || value.contains(" а ") || value.contains(", но")) {
+                    //In 44 options, we search by words, and write down the desired key
+                    if (value.contains(". ") ||
+                            value.contains(", ") ||
+                            value.contains(" и ") ||
+                            value.contains(" а ") ||
+                            value.contains(", но")) {
                         resultKey = key;
                     }
                 }
                 for (char aChar : chars) {
-                    writer.write((char) ((int) aChar - resultKey));
+                    writer.write((char)((int) aChar - resultKey));
                 }
             }
         } catch (IOException e) {

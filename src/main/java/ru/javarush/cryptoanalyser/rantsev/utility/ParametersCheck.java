@@ -9,6 +9,7 @@ import java.util.Map;
 
 public class ParametersCheck {
     public String[] checkArgs(String[] args) {
+        //We call our list of commands to check from the Menu class
         Menu.addCommands();
         Map<Integer, String> commands = Menu.getCommands();
         String[] verifiedArgs = new String[commands.size() - 1];

@@ -1,6 +1,6 @@
 package ru.javarush.cryptoanalyser.rantsev.toplevel;
 
-import ru.javarush.cryptoanalyser.rantsev.utility.FileGeneration;
+import ru.javarush.cryptoanalyser.rantsev.files.FileGeneration;
 import ru.javarush.cryptoanalyser.rantsev.utility.ShiftKey;
 
 import java.util.HashMap;
@@ -28,11 +28,12 @@ public class Menu {
 
     public String[] getArgs() {
         int mode = getMode(console);
+        //If we choose exit, then immediately close the program
         if (mode == 4) {
             System.exit(0);
         }
-        FileGeneration fileGeneration = new FileGeneration();
         ShiftKey shiftKey = new ShiftKey();
+        //We add standard commands, that is, in the future it will be possible to add them without breaking the logic
         addCommands();
         String[] args = new String[commands.size() - 1];
         for (Map.Entry<Integer, String> pair : commands.entrySet()) {
@@ -42,26 +43,36 @@ public class Menu {
                 args[0] = strCommand;
             }
         }
+        //We add standard files, that is, in the future it will be possible to add them without breaking the logic
         addFiles();
-        System.out.println(Message.SOURCE_SELECTION + Message.ANSI_RED);
-        System.out.println(Message.WARNING + Message.ANSI_GREEN);
-        fileGeneration.getInputFile(args);
-        System.out.println(Message.SUCCESSFULLY + Message.ANSI_BLACK);
-        System.out.println();
-        System.out.println(Message.SOURCE_DESTINATION + "\s" + files[mode] + ")" + Message.ANSI_RED);
-        System.out.println(Message.WARNING + Message.ANSI_GREEN);
-        fileGeneration.getOutputFiles(files, args, mode);
-        System.out.println(Message.SUCCESSFULLY + Message.ANSI_BLACK);
+        if (mode == 3) {
+            System.out.println("\n" + Message.ANSI_RED + Message.WARNING + Message.ANSI_BLACK + "\n");
+        }
+        System.out.println(Message.SOURCE_SELECTION + Message.ANSI_GREEN);
+        //Processing and generating files for reading
+        FileGeneration fileInput = new FileGeneration(args);
+        fileInput.getInputFile();
+
+        System.out.println("\n" + Message.SUCCESSFULLY + Message.ANSI_BLACK + "\n");
+        System.out.println(Message.SOURCE_DESTINATION + "\s" + files[mode] + ")" + Message.ANSI_GREEN);
+
+        //Processing and generating files for recording
+        FileGeneration fileOutput = new FileGeneration(files, args, mode);
+        fileOutput.getOutputFiles();
+
+        System.out.println("\n" +Message.SUCCESSFULLY + Message.ANSI_BLACK + "\n");
+        //Keys are available only to encoder and decoder, the rest do not need them
         if (mode == 0 || mode == 1) {
             System.out.println(Message.SOURCE_KEY + Message.ANSI_RED);
             System.out.println(Message.KEY_WARNING + Message.ANSI_GREEN);
             shiftKey.getKey(args);
-            System.out.println(Message.KEY_SUCCESSFULLY + Message.ANSI_BLACK);
+            System.out.println("\n" + Message.KEY_SUCCESSFULLY + Message.ANSI_BLACK + "\n");
         }
         return args;
     }
 
     public static int getMode(Scanner console) {
+        //Choose one of 5 modes, otherwise repeat the menu call
         callMenu();
         int mode;
         do {
