@@ -1,4 +1,4 @@
-package ru.javarush.cryptoanalyser.rantsev.toplevel;
+package ru.javarush.cryptoanalyser.rantsev.console;
 
 import ru.javarush.cryptoanalyser.rantsev.files.FileGeneration;
 import ru.javarush.cryptoanalyser.rantsev.utility.ShiftKey;
@@ -14,8 +14,8 @@ public class Menu {
     public Menu(Scanner console) {
         this.console = console;
     }
-
     public static void callMenu() {
+        System.out.println("\n" +Message.ANSI_BLUE + Message.WELCOME + Message.ANSI_BLACK + "\n");
         System.out.println(Message.DASH + Message.ANSI_PURPLE);
         System.out.println(Message.SELECT_MODE + Message.ANSI_CYAN);
         System.out.println(Message.CHOICE_ENCRYPT);
@@ -47,6 +47,7 @@ public class Menu {
         addFiles();
         if (mode == 3) {
             System.out.println("\n" + Message.ANSI_RED + Message.WARNING + Message.ANSI_BLACK + "\n");
+            System.out.println(Message.ANSI_YELLOW + Message.WARNING_WAIT + Message.ANSI_BLACK + "\n");
         }
         System.out.println(Message.SOURCE_SELECTION + Message.ANSI_GREEN);
         //Processing and generating files for reading

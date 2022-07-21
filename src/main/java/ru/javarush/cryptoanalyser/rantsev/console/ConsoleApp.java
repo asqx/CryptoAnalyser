@@ -1,15 +1,16 @@
-package ru.javarush.cryptoanalyser.rantsev.toplevel;
+package ru.javarush.cryptoanalyser.rantsev.console;
 
 import ru.javarush.cryptoanalyser.rantsev.controller.MainController;
+import ru.javarush.cryptoanalyser.rantsev.exception.ConsoleAppException;
 import ru.javarush.cryptoanalyser.rantsev.utility.ParametersCheck;
 
 
 import java.util.Arrays;
 
-public class Application {
+public class ConsoleApp {
     private final MainController mainController;
     private final Menu menu;
-    public Application(MainController mainController, Menu menu) {
+    public ConsoleApp(MainController mainController, Menu menu) {
         this.mainController = mainController;
         this.menu = menu;
     }
@@ -28,7 +29,7 @@ public class Application {
                 String[] parameters = Arrays.copyOfRange(verifiedArgs, 1, verifiedArgs.length);
                 mainController.execute(command, parameters);
             } else {
-                System.err.println(Message.PARAMETERS);
+                throw new ConsoleAppException(Message.PARAMETERS);
             }
     }
 }

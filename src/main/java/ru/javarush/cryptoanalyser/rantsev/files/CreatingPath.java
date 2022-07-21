@@ -1,7 +1,7 @@
 package ru.javarush.cryptoanalyser.rantsev.files;
 
-import ru.javarush.cryptoanalyser.rantsev.exception.ApplicationException;
-import ru.javarush.cryptoanalyser.rantsev.toplevel.Message;
+import ru.javarush.cryptoanalyser.rantsev.exception.ConsoleAppException;
+import ru.javarush.cryptoanalyser.rantsev.console.Message;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,6 +14,6 @@ abstract class CreatingPath {
             console = getFileName.toString();
             return console;
         }
-        throw new ApplicationException(Message.PATH_NO_FIND);
+        throw new ConsoleAppException(Message.PATH_NO_FIND);
     }
 }

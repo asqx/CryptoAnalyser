@@ -2,7 +2,7 @@ package ru.javarush.cryptoanalyser.rantsev.commands;
 
 import ru.javarush.cryptoanalyser.rantsev.entity.Result;
 import ru.javarush.cryptoanalyser.rantsev.entity.ResultCode;
-import ru.javarush.cryptoanalyser.rantsev.toplevel.Message;
+import ru.javarush.cryptoanalyser.rantsev.console.Message;
 import ru.javarush.cryptoanalyser.rantsev.utility.PathFinder;
 
 import java.io.*;

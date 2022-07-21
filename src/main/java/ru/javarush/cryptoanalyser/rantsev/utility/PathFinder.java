@@ -2,13 +2,11 @@ package ru.javarush.cryptoanalyser.rantsev.utility;
 
 import java.io.File;
 public class PathFinder {
+    private PathFinder() {
+
+    }
     public static String getRoot() {
         String root = System.getProperty("user.dir");
-        System.out.println(root);
         return root + File.separator  + "text" + File.separator;
-    }
-    public static String getRoot(int mode, String[] files) {
-        String root = System.getProperty("user.dir");
-        return root + File.separator + "text" + File.separator;
     }
 }
