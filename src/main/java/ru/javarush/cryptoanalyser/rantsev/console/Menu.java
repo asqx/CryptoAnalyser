@@ -2,6 +2,7 @@ package ru.javarush.cryptoanalyser.rantsev.console;
 
 import ru.javarush.cryptoanalyser.rantsev.files.FileGeneration;
 import ru.javarush.cryptoanalyser.rantsev.utility.ShiftKey;
+import static ru.javarush.cryptoanalyser.rantsev.console.Messages.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,15 +16,15 @@ public class Menu {
         this.console = console;
     }
     public static void callMenu() {
-        System.out.println("\n" +Message.ANSI_BLUE + Message.WELCOME + Message.ANSI_BLACK + "\n");
-        System.out.println(Message.DASH + Message.ANSI_PURPLE);
-        System.out.println(Message.SELECT_MODE + Message.ANSI_CYAN);
-        System.out.println(Message.CHOICE_ENCRYPT);
-        System.out.println(Message.CHOICE_DECRYPT);
-        System.out.println(Message.CHOICE_BRUTEFORCE);
-        System.out.println(Message.CHOICE_ANALYSE);
-        System.out.println(Message.CHOICE_EXIT + Message.ANSI_BLACK);
-        System.out.println(Message.DASH);
+        System.out.println("\n" +ANSI_BLUE + WELCOME + ANSI_BLACK + "\n");
+        System.out.println(DASH + Messages.ANSI_PURPLE);
+        System.out.println(SELECT_MODE + Messages.ANSI_CYAN);
+        System.out.println(CHOICE_ENCRYPT);
+        System.out.println(CHOICE_DECRYPT);
+        System.out.println(CHOICE_BRUTEFORCE);
+        System.out.println(CHOICE_ANALYSE);
+        System.out.println(CHOICE_EXIT + ANSI_BLACK);
+        System.out.println(DASH);
     }
 
     public String[] getArgs() {
@@ -46,28 +47,28 @@ public class Menu {
         //We add standard files, that is, in the future it will be possible to add them without breaking the logic
         addFiles();
         if (mode == 3) {
-            System.out.println("\n" + Message.ANSI_RED + Message.WARNING + Message.ANSI_BLACK + "\n");
-            System.out.println(Message.ANSI_YELLOW + Message.WARNING_WAIT + Message.ANSI_BLACK + "\n");
+            System.out.println("\n" + ANSI_RED + WARNING + ANSI_BLACK + "\n");
+            System.out.println(ANSI_YELLOW + WARNING_WAIT + ANSI_BLACK + "\n");
         }
-        System.out.println(Message.SOURCE_SELECTION + Message.ANSI_GREEN);
+        System.out.println(SOURCE_SELECTION + ANSI_GREEN);
         //Processing and generating files for reading
         FileGeneration fileInput = new FileGeneration(args);
         fileInput.getInputFile();
 
-        System.out.println("\n" + Message.SUCCESSFULLY + Message.ANSI_BLACK + "\n");
-        System.out.println(Message.SOURCE_DESTINATION + "\s" + files[mode] + ")" + Message.ANSI_GREEN);
+        System.out.println("\n" + SUCCESSFULLY + ANSI_BLACK + "\n");
+        System.out.println(SOURCE_DESTINATION + "\s" + files[mode] + ")" + ANSI_GREEN);
 
         //Processing and generating files for recording
         FileGeneration fileOutput = new FileGeneration(files, args, mode);
         fileOutput.getOutputFiles();
 
-        System.out.println("\n" +Message.SUCCESSFULLY + Message.ANSI_BLACK + "\n");
+        System.out.println("\n" + SUCCESSFULLY + ANSI_BLACK + "\n");
         //Keys are available only to encoder and decoder, the rest do not need them
         if (mode == 0 || mode == 1) {
-            System.out.println(Message.SOURCE_KEY + Message.ANSI_RED);
-            System.out.println(Message.KEY_WARNING + Message.ANSI_GREEN);
+            System.out.println(SOURCE_KEY + ANSI_RED);
+            System.out.println(KEY_WARNING + ANSI_GREEN);
             shiftKey.getKey(args);
-            System.out.println("\n" + Message.KEY_SUCCESSFULLY + Message.ANSI_BLACK + "\n");
+            System.out.println("\n" + KEY_SUCCESSFULLY + ANSI_BLACK + "\n");
         }
         return args;
     }
@@ -85,7 +86,7 @@ public class Menu {
                 case "4" -> 3;
                 case "5" -> 4;
                 default -> {
-                    System.err.println(Message.ERROR_COMMAND);
+                    System.err.println(ERROR_COMMAND);
                     callMenu();
                     yield -1;
                 }
@@ -106,7 +107,7 @@ public class Menu {
     public static void addFiles() {
         files = new String[commands.size() - 1];
         for (int i = 0; i < files.length; i++) {
-            files[i] = commands.get(i) + Message.FILE_FORMAT;
+            files[i] = commands.get(i) + FILE_FORMAT;
         }
     }
     public static Map<Integer, String> getCommands() {

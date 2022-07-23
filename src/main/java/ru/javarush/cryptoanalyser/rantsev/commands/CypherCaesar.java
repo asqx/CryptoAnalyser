@@ -4,16 +4,16 @@ import ru.javarush.cryptoanalyser.rantsev.utility.PathFinder;
 
 import java.io.*;
 
-public class Cypher {
+public class CypherCaesar {
     private final String fileIn;
     private final String fileOut;
     private final int key;
-    public Cypher(String fileIn, String fileOut, int key) {
+    public CypherCaesar(String fileIn, String fileOut, int key) {
         this.fileIn = fileIn;
         this.fileOut = fileOut;
         this.key = key;
     }
-    void caesarCypher() {
+    void getCypher() {
         String root = PathFinder.getRoot();
         try (BufferedReader reader = new BufferedReader(new FileReader(root + fileIn));
              BufferedWriter writer = new BufferedWriter(new FileWriter(root + fileOut))) {

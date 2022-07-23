@@ -5,13 +5,13 @@ import ru.javarush.cryptoanalyser.rantsev.entity.ResultCode;
 
 public class Encoder implements Action{
     @Override
-    public Result execute(String[] parameters) {
+    public void execute(String[] parameters) {
         int key = Integer.parseInt(parameters[2]);
         if (key > 44) {
             key = key%44;
         }
-        Cypher cypher = new Cypher(parameters[0], parameters[1], key);
-        cypher.caesarCypher();
-        return new Result(ResultCode.OK, "File is ready");
+        CypherCaesar cypherCaesar = new CypherCaesar(parameters[0], parameters[1], key);
+        cypherCaesar.getCypher();
+        new Result(ResultCode.OK, "File is ready");
     }
 }

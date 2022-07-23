@@ -29,7 +29,7 @@ public class ConsoleApp {
                 String[] parameters = Arrays.copyOfRange(verifiedArgs, 1, verifiedArgs.length);
                 mainController.execute(command, parameters);
             } else {
-                throw new ConsoleAppException(Message.PARAMETERS);
+                throw new ConsoleAppException(Messages.PARAMETERS);
             }
     }
 }

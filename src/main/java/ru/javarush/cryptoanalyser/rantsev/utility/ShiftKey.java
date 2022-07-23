@@ -1,7 +1,7 @@
 package ru.javarush.cryptoanalyser.rantsev.utility;
 
 import ru.javarush.cryptoanalyser.rantsev.exception.ConsoleAppException;
-import ru.javarush.cryptoanalyser.rantsev.console.Message;
+import ru.javarush.cryptoanalyser.rantsev.console.Messages;
 
 import java.util.Scanner;
 
@@ -20,9 +20,9 @@ public class ShiftKey {
                 args[3] = "1";
             }
         } catch (ConsoleAppException e) {
-            throw new ConsoleAppException(Message.KEY_ERROR);
+            throw new ConsoleAppException(Messages.KEY_ERROR);
         } catch (NumberFormatException e) {
-            throw new NumberFormatException(Message.KEY_ERROR);
+            throw new NumberFormatException(Messages.KEY_ERROR);
         }
     }
 }

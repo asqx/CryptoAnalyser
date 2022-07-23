@@ -1,5 +1,5 @@
 package ru.javarush.cryptoanalyser.rantsev.console;
-public interface Message {
+public interface Messages {
     String ANSI_BLACK = "\u001B[30m";
     String ANSI_PURPLE = "\u001B[35m";
     String ANSI_CYAN = "\u001B[36m";
@@ -28,7 +28,7 @@ public interface Message {
     String KEY_SUCCESSFULLY = "Notification: Key selected successfully";
     String PARAMETERS = "Parameters passed incorrectly at startup";
     String KEY_ERROR = "Entered not a number";
-    String WELCOME = "This is a cryptoanalyser. It has 5 mods. You can read more about them in READMI.txt. Hints will help when working with";
+    String WELCOME = "This is a cryptoanalyser. It has 4 mods. You can read more about them in READMI.txt. Hints will help when working with";
     String WARNING_WAIT = "Notification: The file may take longer to process than usual. Wait, please.";
 
 

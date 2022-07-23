@@ -2,7 +2,7 @@ package ru.javarush.cryptoanalyser.rantsev.commands;
 
 import ru.javarush.cryptoanalyser.rantsev.entity.Result;
 import ru.javarush.cryptoanalyser.rantsev.entity.ResultCode;
-import ru.javarush.cryptoanalyser.rantsev.console.Message;
+import ru.javarush.cryptoanalyser.rantsev.console.Messages;
 import ru.javarush.cryptoanalyser.rantsev.utility.PathFinder;
 
 import java.io.*;
@@ -13,7 +13,7 @@ public class Bruteforce implements Action{
     int count;
     int resultKey;
     @Override
-    public Result execute(String[] parameters) {
+    public void execute(String[] parameters) {
         String root = PathFinder.getRoot();
         Map<Integer, String> map = new HashMap<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(root + parameters[0]));
@@ -52,8 +52,8 @@ public class Bruteforce implements Action{
                 }
             }
         } catch (IOException e) {
-            System.err.println(Message.FILE_NO_FIND);
+            System.err.println(Messages.FILE_NO_FIND);
         }
-        return new Result(ResultCode.OK, "File is ready");
+        new Result(ResultCode.OK, "File is ready");
     }
 }

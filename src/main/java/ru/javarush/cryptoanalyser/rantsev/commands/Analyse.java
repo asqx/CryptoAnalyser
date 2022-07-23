@@ -14,7 +14,7 @@ public class Analyse implements Action {
     private final TreeMap <Integer, Character> source = new TreeMap<>();
 
     @Override
-    public Result execute(String[] parameters) {
+    public void execute(String[] parameters) {
         String root = PathFinder.getRoot();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(root + parameters[1]))) {
             String sourceText = Files.readString(Paths.get(root + parameters[0]));
@@ -33,7 +33,6 @@ public class Analyse implements Action {
                         source.put(count, aChar);
                     }
                 }
-            //(100 * count) / chars.length)
                 getStatistic();
                 List<Map.Entry<Integer, Character>> sourceArray = new ArrayList<>(source.entrySet());
             List<Map.Entry<Integer, Character>> statisticArray = new ArrayList<>(statistic.entrySet());
@@ -54,15 +53,11 @@ public class Analyse implements Action {
                     }
                 }
             }
-            for (int key: source.keySet()) {
-                char x = source.get(key);
-                System.out.println(key + " ---> " + x);
-            }
             writer.write(new String(chars));
         } catch (IOException e) {
-            System.out.println();
+            System.out.println(e.getMessage());
         }
-        return new Result(ResultCode.OK, "File is ready");
+        new Result(ResultCode.OK, "File is ready");
     }
     void getStatistic() {
         statistic.put(0, ')');

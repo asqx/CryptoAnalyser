@@ -1,7 +1,7 @@
 package ru.javarush.cryptoanalyser.rantsev.files;
 
 import ru.javarush.cryptoanalyser.rantsev.exception.ConsoleAppException;
-import ru.javarush.cryptoanalyser.rantsev.console.Message;
+import static ru.javarush.cryptoanalyser.rantsev.console.Messages.*;
 import ru.javarush.cryptoanalyser.rantsev.utility.PathFinder;
 
 import java.io.File;
@@ -53,7 +53,7 @@ public class CreatingFile extends CreatingPath {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        throw new ConsoleAppException(Message.FILE_PROCESS);
+        throw new ConsoleAppException(FILE_PROCESS);
     }
 
     String createStandardFile() {
@@ -79,6 +79,6 @@ public class CreatingFile extends CreatingPath {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        throw new ConsoleAppException(Message.FILE_PROCESS);
+        throw new ConsoleAppException(FILE_PROCESS);
     }
 }
