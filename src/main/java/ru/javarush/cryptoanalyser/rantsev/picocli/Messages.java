@@ -19,6 +19,7 @@ public interface Messages {
     String KEY_HELP = "You need to set a key. It must be an integer";
     String PERFORMED = "Performed";
     String WELCOME = "This is a cryptoanalyser. It has 5 mods";
+    String ENTER = "Enter command";
 
     String ANSI_BLACK = "\u001B[30m";
     String ANSI_CYAN = "\u001B[36m";

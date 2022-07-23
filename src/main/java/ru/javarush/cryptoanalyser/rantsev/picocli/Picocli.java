@@ -60,6 +60,6 @@ public class Picocli implements Runnable {
     }
     @Override
     public void run() {
-        throw new CommandLine.ParameterException(commandSpec.commandLine(), "\s");
+        throw new CommandLine.ParameterException(commandSpec.commandLine(), ENTER);
     }
 }
