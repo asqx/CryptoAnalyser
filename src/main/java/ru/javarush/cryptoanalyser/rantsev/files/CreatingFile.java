@@ -12,7 +12,8 @@ public class CreatingFile extends CreatingPath {
     private String args;
     private String[] files;
     private int mode;
-    String root = PathFinder.getRoot();
+    private final String root = PathFinder.getRoot();
+    private File file;
 
     public CreatingFile(String args) {
         this.args = args;
@@ -23,32 +24,23 @@ public class CreatingFile extends CreatingPath {
         this.files = files;
         this.mode = mode;
     }
-
     @Override
-    String reviewingPath(String args) {
-        return super.reviewingPath(args);
+    String reviewingPath(String console) {
+        return super.reviewingPath(console);
     }
-
-    String createTxt (){
+    public String createTxt (){
         Scanner scanner = new Scanner(System.in);
         String console = scanner.nextLine();
-
         try {
             if (console.isEmpty()) {
-                File fileTxt = new File(root + "text.txt");
-                if (fileTxt.createNewFile() || fileTxt.isFile()) {
-                    args = fileTxt.getName();
+                file = new File(root + "text.txt");
+                if (file.createNewFile() || file.isFile()) {
+                    args = file.getName();
                     return args;
                     }
                 }
             if (!console.isEmpty()) {
-                File fileTxt = new File(root + console);
-                if (fileTxt.isFile()) {
-                    args = fileTxt.getName();
-                } else {
-                    reviewingPath(console);
-                }
-                return args;
+                return reviewingPath(console);
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -56,25 +48,20 @@ public class CreatingFile extends CreatingPath {
         throw new ConsoleAppException(FILE_PROCESS);
     }
 
-    String createStandardFile() {
+    public String createStandardFile() {
         Scanner scanner = new Scanner(System.in);
         String console = scanner.nextLine();
+        System.out.println(root);
         try {
             if (console.isEmpty()) {
-                File fileStandard = new File(root + files[mode]);
-                if (fileStandard.createNewFile() || fileStandard.isFile()) {
-                    args = fileStandard.getName();
+                file = new File(root + files[mode]);
+                if (file.createNewFile() || file.isFile()) {
+                    args = file.getName();
                     return args;
                 }
             }
             if (!console.isEmpty()) {
-                File fileStandard = new File(root + console);
-                if (fileStandard.isFile()) {
-                    args = fileStandard.getName();
-                } else {
-                    reviewingPath(console);
-                }
-                return args;
+                return reviewingPath(console);
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());

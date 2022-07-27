@@ -31,5 +31,4 @@ public interface Messages {
     String WELCOME = "This is a cryptoanalyser. It has 4 mods. You can read more about them in READMI.txt. Hints will help when working with";
     String WARNING_WAIT = "Notification: The file may take longer to process than usual. Wait, please.";
 
-
 }

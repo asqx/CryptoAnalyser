@@ -22,41 +22,40 @@ public class Picocli implements Runnable {
 
     @CommandLine.Option(names = {"-a", "--" + ANALYSE}, description = COMMAND_HELP + "\s" + ANALYSE + ".")
     String an = ANALYSE;
-    @CommandLine.Command(name = ANSI_CYAN + ENCODE + ANSI_BLACK + ":" + ANSI_BLUE, description = ENCODE_HELP)
+    @CommandLine.Command(name = ENCODE, description = ENCODE_HELP)
     void encode(
             @CommandLine.Parameters(paramLabel = SOURCE_FILE, description = FILE_HELP) String source,
             @CommandLine.Parameters(paramLabel = DESTINATION_FILE, description = FILE_HELP) String destination,
             @CommandLine.Parameters(paramLabel = KEY, description = KEY_HELP) String key) {
         String[] args = {ENCODE, source, destination, key};
         application.run(args);
-        System.out.println(ANSI_GREEN + PERFORMED);
+        System.out.println(ANSI_GREEN + PERFORMED + "\s" + ENCODE);
     }
-    @CommandLine.Command(name = ANSI_CYAN + DECODE + ANSI_BLACK + ":" + ANSI_BLUE, description = DECODE_HELP)
+    @CommandLine.Command(name = DECODE, description = DECODE_HELP)
     void decode(
             @CommandLine.Parameters(paramLabel = SOURCE_FILE, description = FILE_HELP) String source,
             @CommandLine.Parameters(paramLabel = DESTINATION_FILE, description = FILE_HELP) String destination,
             @CommandLine.Parameters(paramLabel = KEY, description = KEY_HELP) String key) {
         String[] args = {DECODE, source, destination, key};
         application.run(args);
-        System.out.println(ANSI_GREEN + PERFORMED);
+        System.out.println(ANSI_GREEN + PERFORMED + "\s" + DECODE);
     }
-    @CommandLine.Command(name = ANSI_CYAN + BRUTEFORCE + ANSI_BLACK + ":" + ANSI_BLUE, description = BRUTEFORCE_HELP)
+    @CommandLine.Command(name = BRUTEFORCE, description = BRUTEFORCE_HELP)
     void bruteforce(
             @CommandLine.Parameters(paramLabel = SOURCE_FILE, description = FILE_HELP) String source,
             @CommandLine.Parameters(paramLabel = DESTINATION_FILE, description = FILE_HELP) String destination) {
         String[] args = {BRUTEFORCE, source, destination};
         application.run(args);
-        System.out.println(ANSI_GREEN + PERFORMED);
+        System.out.println(ANSI_GREEN + PERFORMED + "\s" + BRUTEFORCE);
     }
 
-    @CommandLine.Command(name = ANSI_CYAN + ANALYSE + ANSI_BLACK + ":" + ANSI_BLUE,
-            description = ANALYSE_HELP + "\n" + ANSI_YELLOW + ANALYSE_WARNING)
+    @CommandLine.Command(name = ANALYSE, description = ANALYSE_HELP)
     void analyse(
             @CommandLine.Parameters(paramLabel = SOURCE_FILE, description = FILE_HELP) String source,
             @CommandLine.Parameters(paramLabel = DESTINATION_FILE, description = FILE_HELP) String destination) {
         String[] args = {ANALYSE, source, destination};
         application.run(args);
-        System.out.println(ANSI_GREEN + PERFORMED);
+        System.out.println(ANSI_GREEN + PERFORMED + "\s" + ANALYSE);
     }
     @Override
     public void run() {

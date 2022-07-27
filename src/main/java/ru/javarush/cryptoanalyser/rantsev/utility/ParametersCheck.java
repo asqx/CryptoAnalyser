@@ -2,8 +2,11 @@ package ru.javarush.cryptoanalyser.rantsev.utility;
 
 import ru.javarush.cryptoanalyser.rantsev.exception.ConsoleAppException;
 import ru.javarush.cryptoanalyser.rantsev.console.Menu;
+
 import static ru.javarush.cryptoanalyser.rantsev.console.Messages.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
@@ -18,12 +21,10 @@ public class ParametersCheck {
         for (int i = 0; i < commands.size() - 1; i++) {
             if (args[0].equals(commands.get(i))) {
                 verifiedArgs[0] = args[0];
-                break;
-            } else if (args[0].equals(commands.get(4))) {
-                System.exit(0);
-            } else {
-                throw new ConsoleAppException(ERROR_COMMAND);
             }
+        }
+        if (args[0].equals(commands.get(4))) {
+            System.exit(0);
         }
         if (checkFiles(args[1]) && checkFiles(args[2])) {
             verifiedArgs[1] = args[1];
@@ -44,8 +45,21 @@ public class ParametersCheck {
         if (Files.exists(Path.of(root + path)) && !Files.isDirectory(Path.of(root + path))) {
             return true;
         } else {
-            throw new ConsoleAppException(FILE_NO_FIND);
+            return createFile(args);
         }
+    }
+    boolean createFile(String args) {
+        File file = new File(root + args);
+        try {
+            if (file.createNewFile() || file.isFile()) {
+                return true;
+            } else {
+                throw new ConsoleAppException(FILE_NO_FIND);
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
     }
     boolean checkKey(String args) {
             int keyInt = Integer.parseInt(args);
